@@ -4,33 +4,25 @@ import os
 from subprocess import Popen
 import sys
 
-read_navbar = open('navbar.txt', 'r').read()
-read_css = open('main_css.txt', 'r').read()
-read_gs = open('main_js.txt','r').read()
-
-
 inFile = sys.argv[1]
-Popen('jupyter nbconvert '+inFile, shell=True).wait()
+Popen('jupyter nbconvert '+inFile +' --template basic', shell=True).wait()
 newFile = os.path.splitext(inFile)[0]+'.html'
-body = open(newFile, 'r').read()
 
-if read_navbar not in body:
-    body = body.replace("<body>", "<body>\n" + read_navbar)
+template = open('custom/template.html', 'r').read()
 
-if read_gs not in body:
-    body = body.replace("</body>", read_gs + "\n</body>")
+read_navbar = open('custom/navbar.txt', 'r').read()
+read_css = open('custom/main_css.txt', 'r').read()
+read_gs = open('custom/main_js.txt','r').read()
+read_body = open(newFile, 'r').read()
+read_mathjax = open('custom/mathjax.txt', 'r').read()
 
-if read_css not in body:
-    body = body.replace("<body>", read_css + "\n<body>")
+template = template.replace("[--navbar--]", "\n" + read_navbar + "\n")
+template = template.replace("[--js--]", "\n" + read_gs + "\n")
+template = template.replace("[--css--]", "\n" + read_css + "\n")
+template = template.replace("[--body--]", "\n" + read_body + "\n")
+template = template.replace("[--mathjax--]", "\n" + read_mathjax + "\n")
 
-
-with open('blogpost.html', 'w') as f:
-    f.write(body)
-
-
-
-
-
-
+with open(newFile, 'w') as f:
+    f.write(template)
 
 
