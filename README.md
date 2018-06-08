@@ -18,18 +18,15 @@ in your command line.
 ## How to use
 To use simply clone this to your local repository. Then follow the following steps:
 
-* Replace the NHANES_analysis.ipynb with your own Jupyter Notebook file, say, yourfile.ipynb
-* Remove blogpost.html (This is my output.)
-* Modify navbar.txt to your own code for adding custom navigation bar on top of your web page
-* Modify main_css.txt to match your website's theme
-* Modify main_js to match your website's theme
+* Replace the jupyter-blog.ipynb with your own Jupyter Notebook file. For example, yourfile.ipynb
+* Modify the `.txt` files in the `custom` folder to your own. (This step is very important. You can refer to `template.html`).
 * Open terminal and cd to this directory and run
 
 ```
 python blog-convert.py yourfile.ipynb
 ```
 
-You should now have a file named blogpost.html, modified to match the theme of your static website.
+You should now have new a file named your.html, modified to match the theme of your static website.
 
 ## More
-For more customization, you can modify the Python script blog-convert.py.
+Please visit my website [https://elanding.xyz/blog/2018/jupyter-blog.html](https://elanding.xyz/blog/2018/jupyter-blog.html) for more detailed instructions.
