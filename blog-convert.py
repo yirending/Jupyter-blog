@@ -25,4 +25,6 @@ template = template.replace("[--mathjax--]", "\n" + read_mathjax + "\n")
 with open(newFile, 'w') as f:
     f.write(template)
 
+Popen('cp ' + inFile + ' /Users/yirending/Documents/Github/yirending.github.io/blog/2018', shell=True).wait()
+Popen('mv ' + newFile + ' /Users/yirending/Documents/Github/yirending.github.io/blog/2018', shell=True).wait()
 
